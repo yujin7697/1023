@@ -52,6 +52,7 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService   im
 //      System.out.println("super.loadUser : " +super.loadUser(userRequest));
         OAuth2User oauth2User =   super.loadUser(userRequest);
         OAuth2UserInfo oAuth2UserInfo = null;
+        String profileimage = null;
         System.out.println("auth2User.getAttributes() : " +oauth2User.getAttributes());
         if(userRequest.getClientRegistration().getRegistrationId().equals("kakao"))
         {
@@ -60,6 +61,10 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService   im
             kakaoUserInfo.setId(userRequest.getClientRegistration().getClientId());
             oAuth2UserInfo = kakaoUserInfo;
             //oAuth2UserInfo = new KakaoUserInfo((Map<String, Object>) oauth2User.getAttributes().get("properties"));
+
+//            //프로필ㅇ ㅣ미지
+//            profileimage = kakaoUserInfo.getAttributes().get("profile_image").toString();
+//            System.out.println("PROFILEIMAGE : " + profileimage);
         }
         else if(userRequest.getClientRegistration().getRegistrationId().equals("google"))
         {
@@ -79,6 +84,8 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService   im
         String password = passwordEncoder.encode("1234");
         String email = oAuth2UserInfo.getEmail();
         String role = "ROLE_USER";
+
+
 
         //DB 저장
         Optional<User> optional =   userRepository.findById(email);

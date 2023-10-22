@@ -12,7 +12,9 @@ public class KakaoUserInfo implements OAuth2UserInfo{
     private Map<String,Object> attributes;
 
     public KakaoUserInfo(Map<String, Object> attributes) {
+
         this.attributes = attributes;
+        System.out.println("attributes : " + attributes);
     }
 
     @Override
@@ -26,6 +28,7 @@ public class KakaoUserInfo implements OAuth2UserInfo{
     }
     @Override
     public String getEmail() {
+
         return (String)attributes.get("email");
     }
     @Override

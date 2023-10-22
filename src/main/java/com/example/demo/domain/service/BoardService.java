@@ -295,4 +295,8 @@ public class BoardService {
         return heartRepository.existsByUserAndBoard(user, board);
     }
 
+    public String getPostOwnerUsername(Long number) {
+        String writer = boardRepository.findByNum(number).get().getEmail();
+        return writer;
+    }
 }

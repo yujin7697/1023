@@ -142,9 +142,6 @@ public class UserController {
 	public String UserUpdate(@RequestParam("newNickname") String newNickname,
 							 @RequestParam("newBirth") String newBirth,
 							 @RequestParam("newPhone") String newPhone,
-							 @RequestParam("newZipcode") String newZipcode,
-							 @RequestParam("newAddr1") String newAddr1,
-							 @RequestParam("newAddr2") String newAddr2,
 							 RedirectAttributes redirectAttributes,
 							 Model model) {
 		log.info("UserUpdate POST/ post");
@@ -155,7 +152,7 @@ public class UserController {
 
 
 
-		boolean isUpdate = userService.UserUpdate(email,newNickname, newBirth, newPhone, newZipcode,newAddr1, newAddr2);
+		boolean isUpdate = userService.UserUpdate(email,newNickname, newBirth, newPhone);
 
 		if (isUpdate) {
 			redirectAttributes.addFlashAttribute("successMessage", "Nickname updated successfully.");

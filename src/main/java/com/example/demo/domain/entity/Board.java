@@ -30,4 +30,9 @@ public class Board {
 
     @ElementCollection
     private List<String> files;
+
+    // 다대일 관계 설정 (Board 엔터티에서 User 엔터티로의 연관관계)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_email", referencedColumnName = "email")
+    private User user;
 }
